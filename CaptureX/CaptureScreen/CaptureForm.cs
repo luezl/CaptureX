@@ -18,6 +18,7 @@ namespace CaptureX
         private bool isMovingRect;
         private bool isRectExist;
         private SolidBrush mask = new SolidBrush(Color.FromArgb(0x4d000000));
+        private SolidBrush infoMask = new SolidBrush(Color.FromArgb(105, 105, 105));
         private Point rectPos;
 
         public CaptureForm()
@@ -355,7 +356,7 @@ namespace CaptureX
             {
                 this.infoPanelPic = new Bitmap(260, 100);
                 Graphics g1 = Graphics.FromImage(this.infoPanelPic);
-                g1.FillRectangle(this.mask, 0, 0, this.infoPanelPic.Width, this.infoPanelPic.Height);
+                g1.FillRectangle(this.infoMask, 0, 0, this.infoPanelPic.Width, this.infoPanelPic.Height);
                 Font f = new Font("宋体", 10f);
                 Font ff = new Font("宋体", 9f,FontStyle.Bold);
                 Pen p = new Pen(Brushes.Orange, 1f);
