@@ -38,6 +38,7 @@ namespace CaptureX
             g.CopyFromScreen(0, 0, 0, 0, new Size(this.currScrMask.Width, this.currScrMask.Height));
             this.currScr = new Bitmap(this.currScrMask);
             //g.FillRectangle(this.mask, 0, 0, this.currScr.Width, this.currScr.Height);
+            //g.DrawRectangle(new Pen(Color.DeepSkyBlue, 2), 0, 0, this.currScr.Width, this.currScr.Height);
             g.Dispose();
             this.BackgroundImage = this.currScrMask;
 
@@ -456,23 +457,18 @@ namespace CaptureX
             Bitmap b = new Bitmap(this.currScrMask);
             Graphics g = Graphics.FromImage(b);
            
-           
             if (this.isRectExist)
             {
                 g.FillRectangle(this.mask, 0, 0, this.currScr.Width, this.currScr.Height);
             }
             g.DrawImage(this.currScr, this.currRect, this.currRect, GraphicsUnit.Pixel);
-            // 线色 红
-            this.DrawRectangleWithAnchor(g, Color.Red, this.currRect);
+            // 线色
+            this.DrawRectangleWithAnchor(g, Color.DeepSkyBlue , this.currRect);
 
-            
-            //this.DrawInfoPanel(g, ((this.currRect.X + 160) > this.currScr.Width) ? (this.currRect.X - 160) : this.currRect.X, ((this.currRect.Y - 0x4c) > 0) ? (this.currRect.Y - 0x4c) : (this.currRect.Y + 6), this.currRect.Width.ToString() + "*" + this.currRect.Height.ToString(), this.currPixel);
             //鼠标位置
             Point m = Control.MousePosition;
 
-            this.DrawInfoPanel(g, ((m.X + 260) > this.currScr.Width) ? (m.X - 260) : (m.X+20), ((m.Y + 110) > this.currScr.Height) ? (m.Y - 110) : (m.Y + 20), this.currRect.Width.ToString() + "*" + this.currRect.Height.ToString(), this.currPixel,m);
-
-            
+            this.DrawInfoPanel(g, ((m.X + 260) > this.currScr.Width) ? (m.X - 260) : (m.X + 20), ((m.Y + 110) > this.currScr.Height) ? (m.Y - 110) : (m.Y + 20), this.currRect.Width.ToString() + "×" + this.currRect.Height.ToString(), this.currPixel, m);        
 
             StaticClass.CurrRect = this.currRect;
             
